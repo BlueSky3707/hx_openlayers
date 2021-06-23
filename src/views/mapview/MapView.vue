@@ -1,0 +1,25 @@
+<template>
+  <div id="mapid"></div>
+</template>
+
+<script>
+import "ol/ol.css";
+import  {intMap} from "../../mapUtils/map"
+import {loadArcgisFlayer } from "../../mapUtils/arcgislayer"
+export default {
+mounted(){
+   intMap("mapid")
+   loadArcgisFlayer()
+}
+}
+</script>
+
+<style>
+#mapid{
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
+    background-color: bisque;
+}
+</style>

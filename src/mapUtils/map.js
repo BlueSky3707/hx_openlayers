@@ -2,7 +2,8 @@ import { Map, View } from 'ol';
 import TileLayer from "ol/layer/Tile"
 import TileArcGISRest from 'ol/source/TileArcGISRest';
 import {mapConfig} from "../mapUtils/mapConfig"
-   export const intMap=function(mapid){
+import {getLayerByid} from "../mapUtils/baselayer"
+   export  const intMap=(mapid)=>{
     let map = new Map({
         target: mapid,
         view: new View({
@@ -12,16 +13,20 @@ import {mapConfig} from "../mapUtils/mapConfig"
         })
       });
   window.$olMap=map;
-  loadIntLayer()
+   loadIntLayer()
+  console.log(getLayerByid("layer1"))
+
  }
- export const loadIntLayer=()=>{
+ export  const loadIntLayer=()=>{
  //加載j基础底图
   let player=new TileLayer({
       source:new TileArcGISRest({
           url:mapConfig.vec
-      })
+      }),
+      layeId:"layer1"
   })
   window.$olMap.addLayer(player)
+
 }
 
 

@@ -13,8 +13,7 @@ import {getLayerByid} from "../mapUtils/baselayer"
         })
       });
   window.$olMap=map;
-   loadIntLayer()
-  console.log(getLayerByid("layer1"))
+  loadIntLayer()
 
  }
  export  const loadIntLayer=()=>{
@@ -23,7 +22,7 @@ import {getLayerByid} from "../mapUtils/baselayer"
       source:new TileArcGISRest({
           url:mapConfig.vec
       }),
-      layeId:"layer1"
+      id:"layer1"
   })
   window.$olMap.addLayer(player)
 

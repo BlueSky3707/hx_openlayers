@@ -9,7 +9,7 @@ export const getLayerByid = (layerid) => {
   let player = null;
   try {
     for (let i = 0; i < players.length; i++) {
-      if (players[i].values_.layeId === layerid) {
+      if (players[i].values_.id === layerid) {
         player = players[i];
         break;
       }

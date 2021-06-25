@@ -14,7 +14,7 @@ import {getLayerByid} from "../mapUtils/baselayer"
       });
   window.$olMap=map;
   loadIntLayer()
-
+  console.log(getLayerByid("layer1"))
  }
  export  const loadIntLayer=()=>{
  //加載j基础底图

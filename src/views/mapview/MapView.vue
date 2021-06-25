@@ -5,7 +5,6 @@
 <script>
 import "ol/ol.css";
 import  {intMap} from "../../mapUtils/map"
-import {loadArcgisFlayer } from "../../mapUtils/arcgislayer"
 export default {
  mounted(){
  intMap("mapid")

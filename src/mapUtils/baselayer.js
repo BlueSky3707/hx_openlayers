@@ -15,8 +15,7 @@ export const getLayerByid = (layerid) => {
       }
     }
   } catch (error) {
-    console.log("获取" + layerId + "图层出错");
-  } finally {
+    console.log("获取" + layerid + "图层出错");
   }
   return player;
 };
@@ -43,6 +42,5 @@ export const reMoveLayerById = (layerId) => {
     }
   } catch (error) {
     console.log("移除" + layerId + "图层出错");
-  } finally {
   }
 };

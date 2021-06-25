@@ -1,10 +1,9 @@
 <template>
 <div  id='content'> 
   <MapView></MapView>
-  <MapTools></MapTools>
+  <MapTools></MapTools>  
 </div>
 </template>
-
 <script>
 import MapView from "../mapview/MapView"
 import MapTools from "../mapview/MapTools"
@@ -18,7 +17,6 @@ export default {
   }
 }
 </script>
-
 <style>
 #content {
   width: 100%;

@@ -4,6 +4,7 @@ import VectorSource from 'ol/source/Vector';
 import {Stroke, Style} from 'ol/style';
 import { Vector as VectorLayer} from 'ol/layer';
 import axios from 'axios'
+
 export function loadArcgisFlayer(){
     let serviceUrl ="http://10.61.5.60:6080/arcgis/rest/services/YA/YA_CreatRiver/FeatureServer/0";
     let  esrijsonFormat = new EsriJSON();
@@ -24,8 +25,8 @@ export function loadArcgisFlayer(){
                   }
             })
             }
-        })
-        let vector = new VectorLayer({
+    })
+    let vector = new VectorLayer({
             source: vectorSource,
             style: new Style({
                 stroke: new Stroke({
@@ -37,6 +38,6 @@ export function loadArcgisFlayer(){
                  })
             }),
           
-          });
-          window.$olMap.addLayer(vector)
+    });
+    window.$olMap.addLayer(vector)
 }

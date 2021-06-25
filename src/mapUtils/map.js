@@ -1,6 +1,7 @@
 import { Map, View } from 'ol';
 import TileLayer from "ol/layer/Tile"
 import TileArcGISRest from 'ol/source/TileArcGISRest';
+import {mapConfig} from "../mapUtils/mapConfig"
    export const intMap=function(mapid){
     let map = new Map({
         target: mapid,
@@ -17,7 +18,7 @@ import TileArcGISRest from 'ol/source/TileArcGISRest';
  //加載j基础底图
   let player=new TileLayer({
       source:new TileArcGISRest({
-          url:"http://113.140.66.226:33225/arcgis/rest/services/TDTSxBaseMap_XX/MapServer"
+          url:mapConfig.vec
       })
   })
   window.$olMap.addLayer(player)

@@ -2,13 +2,13 @@
   <div id="mapid"></div>
 </template>
 
-<script>
+<script lang="js">
 import "ol/ol.css";
-import  {intMap} from "../../mapUtils/map"
+import  {intMap} from "../../mapUtils/map";
 export default {
- mounted(){
- intMap("mapid")
-}
+  mounted(){
+    intMap("mapid");
+  }
 }
 </script>
 

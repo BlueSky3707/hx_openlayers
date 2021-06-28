@@ -1,4 +1,4 @@
-import { Map, View } from 'ol';
+import { Map, View} from 'ol';
 import TileLayer from "ol/layer/Tile"
 import TileArcGISRest from 'ol/source/TileArcGISRest';
 import {mapConfig} from "../mapUtils/mapConfig"
@@ -25,6 +25,8 @@ export  const loadIntLayer=()=>{
   })
   window.$olMap.addLayer(player)
 
+
+ 
 }
 
 

@@ -12,9 +12,9 @@ export  const intMap=(mapid)=>{
     target: mapid,
     view: new View({
       projection: "EPSG:4326",    //使用这个坐标系
-      center: [109.08, 36.4],//陝西中心點
-      zoom: 7,
-      minZoom:7,
+      center: [109.08, 35.6],//陝西中心點
+      zoom: 7.3,
+      minZoom:7.3,
       maxZoom:18
     }),
     controls:defaultControls({
@@ -26,15 +26,24 @@ export  const intMap=(mapid)=>{
   loadIntLayer()
 }
 export  const loadIntLayer=()=>{
-  //加載j基础底图
-  let player=new TileLayer({
+  //加載电子底图
+  let dzdtlayer=new TileLayer({
     source:new TileArcGISRest({
       url:mapConfig.vec
     }),
     id:"dzdt",
     visible:true
   })
-  window.$olMap.addLayer(player)
+  window.$olMap.addLayer(dzdtlayer)
+  //加載影像底图
+  let yxdtlayer=new TileLayer({
+    source:new TileArcGISRest({
+      url:mapConfig.vecblack
+    }),
+    id:"yxdt",
+    visible:false
+  })
+  window.$olMap.addLayer(yxdtlayer)
   //工具图层
   let drawLayer = new VectorLayer({
     key:"draw",

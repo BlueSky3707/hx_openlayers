@@ -19,7 +19,8 @@
 </template>
 <script>
 import MapView from "../mapview/MapView"
- import MapTools from "../mapview/MapTools"
+import MapTools from "../../components/measuretool/Measure.vue"
+//  import MapTools from "../mapview/MapTools"
 import MapPoup from "../../components/poup/MapPoup"
 import {loadEchartLayer,removeOverlays} from "../../components/echartLayer"
 import {move,stopMove,goOn,back,clean} from '../../components/PointMove'

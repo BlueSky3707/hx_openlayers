@@ -24,7 +24,7 @@ import MapTools from "../../components/measuretool/Measure.vue"
 import MapPoup from "../../components/poup/MapPoup"
 import {loadEchartLayer,removeOverlays} from "../../components/echartLayer"
 import {move,stopMove,goOn,back,clean} from '../../components/PointMove'
-import {loadLayer} from '../../components/layersManger'
+import * as layersManger from '../../components/layersManger'
 import {reMoveLayerById} from '../../mapUtils/baselayer'
 export default {
   components: {
@@ -59,11 +59,15 @@ export default {
         loadEchartLayer()
     },
     addpoints(){
-       loadLayer()
+      layersManger.loadLayer()
+    // layersManger.addLayerBySearch({},"","")
+      //layersManger.addLayerByBufferSearch({},"","")
+    //  layersManger.addLayerByNameOrCodeSearch({},"","")
     },
     removepoints(){
        reMoveLayerById("aa")
        reMoveLayerById("bb")
+     // reMoveLayerById("cc")
     }
 }
 }

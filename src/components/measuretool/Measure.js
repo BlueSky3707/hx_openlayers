@@ -9,6 +9,8 @@ var sketch;
 var measureTooltipElement;
 var measureTooltip;
 var overlaytip=[]
+var draw;
+var doubleClickZoom
 export const measure=(map, measureType)=>{
     createMeasureTooltip();
     var pointerMoveHandler = function (evt) {
@@ -18,7 +20,7 @@ export const measure=(map, measureType)=>{
       
     };
     map.on('pointermove', pointerMoveHandler);
-    var draw;
+   
     var formatLength = function (line) {
       // var length2 = getLength(line);
       var length = getLength(line,{ projection: "EPSG:4326"});
@@ -78,7 +80,7 @@ export const measure=(map, measureType)=>{
         })
       });
       map.addInteraction(draw);
-      var doubleClickZoom= map.getInteractions().getArray().find(
+       doubleClickZoom= map.getInteractions().getArray().find(
         interaction => {
           return interaction instanceof DoubleClickZoom;
         }
@@ -149,7 +151,14 @@ export const measure=(map, measureType)=>{
       addInteraction();
     }else{
       layer.getSource().clear();
-      
+      measureTooltipElement = null;
+        
+        
+          map.un('pointermove', pointerMoveHandler);
+          map.removeInteraction(draw);
+          setTimeout(function(){
+            map.addInteraction(doubleClickZoom);
+          },100);
       if(overlaytip.length>0){
         overlaytip.forEach(overlayTmp => {
           if(overlayTmp.getId()==="draw"){

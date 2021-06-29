@@ -64,7 +64,7 @@ export  const loadIntLayer=()=>{
                 width: 1
         }),
         fill: new Fill({
-          color: 'red'
+          color: 'blue'
         })
       })
     })

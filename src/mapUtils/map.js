@@ -13,7 +13,9 @@ export  const intMap=(mapid)=>{
     view: new View({
       projection: "EPSG:4326",    //使用这个坐标系
       center: [109.08, 36.4],//陝西中心點
-      zoom: 7
+      zoom: 7,
+      minZoom:7,
+      maxZoom:18
     }),
     controls:defaultControls({
       attribution: false,

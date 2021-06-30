@@ -6,9 +6,9 @@
 import "ol/ol.css";
 import  {intMap} from "../../mapUtils/map"
 export default {
- mounted(){
- intMap("mapid")
-}
+  mounted(){
+    intMap("mapid")
+  }
 }
 </script>
 

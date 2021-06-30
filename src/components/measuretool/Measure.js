@@ -137,6 +137,8 @@ export const measure=(map, measureType)=>{
         measureTooltipElement.parentNode.removeChild(measureTooltipElement);
       }
       measureTooltipElement = document.createElement('div');
+      measureTooltipElement.style.fontSize="18px"
+      measureTooltipElement.style.fontWeight=600
       measureTooltipElement.className = 'tooltip tooltip-measure';
       measureTooltip = new Overlay({
         id:"draw",
@@ -152,8 +154,6 @@ export const measure=(map, measureType)=>{
     }else{
       layer.getSource().clear();
       measureTooltipElement = null;
-        
-        
           map.un('pointermove', pointerMoveHandler);
           map.removeInteraction(draw);
           setTimeout(function(){

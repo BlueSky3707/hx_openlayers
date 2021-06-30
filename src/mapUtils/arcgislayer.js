@@ -27,6 +27,7 @@ export function loadArcgisFlayer(){
     }
   })
   let vector = new VectorLayer({
+    id:"cc",
     source: vectorSource,
     style: new Style({
       stroke: new Stroke({

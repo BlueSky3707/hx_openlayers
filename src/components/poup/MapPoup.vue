@@ -2,9 +2,9 @@
 
  <div id="popup" class="ol-popup">
       <a href="#" id="popup-closer" class="ol-popup-closer"></a>
-      <div id="popup-content">
-      </div>
-    </div> 
+        <poup1 v-if="poupindex=='aa'" :pValue="pValue" > </poup1>
+        <poup2 v-if="poupindex=='bb'" :pValue="pValue"> </poup2>
+  </div> 
   
 </template>
 
@@ -13,34 +13,38 @@
 
 
  import Overlay from "ol/Overlay"
-
+import poup1 from "./components/poup1.vue"
+import poup2 from "./components/poup2.vue"
 export default {
    components: {
-
+poup1,poup2
   },
+ 
+ 
   data(){
     return{
-    
+      poupindex:"",
+      pValue: {}
     }
    
   },
 mounted(){
-      setTimeout(() => {
+      // setTimeout(() => {
      this.addPopup()
-  }, 2000);
+  // }, 2000);
 },
 methods: {
   addPopup() {
     var that=this
        let container = document.getElementById('popup');
-        let content = document.getElementById('popup-content');
+     //   let content = document.getElementById('popup-content');
         let closer = document.getElementById('popup-closer');	
       var overlay = new Overlay({
         element: container,
         autoPan: true,
         autoPanAnimation: {
           duration: 250,
-        },
+        }
       });
        overlay.setPosition(undefined);
      window.$olMap.addOverlay(overlay)
@@ -48,15 +52,19 @@ methods: {
       closer.onclick = function () {
         overlay.setPosition(undefined);
         closer.blur();
+         that.poupindex=""
         return false;
       }      
       window.$olMap.on('click', function (evt) {
          var feature =  window.$olMap.getFeaturesAtPixel(evt.pixel)[0];
-          if(feature){
+          if(feature&&feature.get("atr")&&feature.get("id")){
+             that.pValue=feature.get("atr")
+             that.poupindex=feature.get("id")
               var coordinate = evt.coordinate;
               window.$olMap.getView().setCenter(coordinate)
               overlay.setPosition(coordinate);
           }else{
+             that.poupindex=""
              overlay.setPosition(null);
           }
       })  
@@ -88,18 +96,21 @@ methods: {
         width: 0;
         position: absolute;
         pointer-events: none;
+        
       }
       .ol-popup:after {
         border-top-color: white;
         border-width: 10px;
         left: 48px;
         margin-left: -10px;
+        display: none;
       }
       .ol-popup:before {
         border-top-color: #cccccc;
         border-width: 11px;
         left: 48px;
         margin-left: -11px;
+        display: none;
       }
       .ol-popup-closer {
         text-decoration: none;

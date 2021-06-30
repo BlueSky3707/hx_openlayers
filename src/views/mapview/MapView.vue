@@ -2,12 +2,12 @@
   <div id="mapid"></div>
 </template>
 
-<script>
+<script lang="js">
 import "ol/ol.css";
-import  {intMap} from "../../mapUtils/map"
+import  {intMap} from "../../mapUtils/map";
 export default {
   mounted(){
-    intMap("mapid")
+    intMap("mapid");
   }
 }
 </script>
@@ -18,6 +18,6 @@ export default {
     height: 100%;
     padding: 0px;
     margin: 0px;
-    background-color: bisque;
+    background-color: #deecf9;
 }
 </style>

@@ -9,12 +9,7 @@
   </div>
 </template>
 <script>
-import { Circle as CircleStyle, Fill, Stroke, Style } from "ol/style";
 import { LineString, Polygon } from "ol/geom";
-import { Tile as TileLayer, Vector as VectorLayer } from "ol/layer";
-import { getArea, getLength } from "ol/sphere";
-import { unByKey } from "ol/Observable";
-
 export default {
   data() {
     return {
@@ -37,19 +32,19 @@ export default {
         return;
       }
       /** @type {string} */
-      const helpMsg = "Click to start drawing";
+      let helpMsg = "Click to start drawing";
 
-      if (sketch) {
-        let geom = sketch.getGeometry();
+      if (this.sketch) {
+        let geom = this.sketch.getGeometry();
         if (geom instanceof Polygon) {
-          helpMsg = continuePolygonMsg;
+          helpMsg = this.continuePolygonMsg;
         } else if (geom instanceof LineString) {
-          helpMsg = continueLineMsg;
+          helpMsg = this.continueLineMsg;
         }
       }
-      helpTooltipElement.innerHTML = helpMsg;
-      helpTooltip.setPosition(evt.coordinate);
-      helpTooltipElement.classList.remove("hidden");
+      this.helpTooltipElement.innerHTML = helpMsg;
+      this.helpTooltip.setPosition(evt.coordinate);
+      this.helpTooltipElement.classList.remove("hidden");
     },
   },
 };

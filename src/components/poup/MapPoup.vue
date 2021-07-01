@@ -59,7 +59,7 @@ methods: {
          var feature =  window.$olMap.getFeaturesAtPixel(evt.pixel)[0];
           if(feature&&feature.get("attributes")&&feature.get("id")){
              that.pValue=feature.get("attributes")
-             that.poupindex=feature.get("attributes")
+             that.poupindex=feature.get("id")
               var coordinate = evt.coordinate;
               window.$olMap.getView().setCenter(coordinate)
               overlay.setPosition(coordinate);

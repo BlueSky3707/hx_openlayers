@@ -59,15 +59,16 @@ export default {
         loadEchartLayer()
     },
     addpoints(){
-      layersManger.loadLayer()
+       layersManger.loadLayer()
+    // layersManger.loadArcgisFlayer()
     // layersManger.addLayerBySearch({},"","")
-      //layersManger.addLayerByBufferSearch({},"","")
-    //  layersManger.addLayerByNameOrCodeSearch({},"","")
+    //layersManger.addLayerByBufferSearch({},"","")
+    // layersManger.addLayerByNameOrCodeSearch({},"","")
     },
     removepoints(){
        reMoveLayerById("aa")
        reMoveLayerById("bb")
-     // reMoveLayerById("cc")
+    // reMoveLayerById("cc")
     }
 }
 }

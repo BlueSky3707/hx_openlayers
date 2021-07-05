@@ -2,7 +2,6 @@ import { Map, View} from 'ol';
 import TileLayer from "ol/layer/Tile"
 import TileArcGISRest from 'ol/source/TileArcGISRest';
 import {mapConfig} from "../mapUtils/mapConfig"
-
 import VectorSource from 'ol/source/Vector'
 import VectorLayer from 'ol/layer/Vector'
 import {Circle as CircleStyle, Fill, Style,Stroke} from 'ol/style'
@@ -29,16 +28,17 @@ export  const loadIntLayer=()=>{
   //加載电子底图
   let dzdtlayer=new TileLayer({
     source:new TileArcGISRest({
-      url:mapConfig.vec
+      url:mapConfig.dtVectorhx
     }),
     id:"dzdt",
     visible:true
   })
   window.$olMap.addLayer(dzdtlayer)
+
   //加載影像底图
   let yxdtlayer=new TileLayer({
     source:new TileArcGISRest({
-      url:mapConfig.vecblack
+      url:mapConfig.imgVectorhx
     }),
     id:"yxdt",
     visible:false

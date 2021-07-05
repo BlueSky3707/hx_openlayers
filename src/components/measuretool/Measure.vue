@@ -43,10 +43,11 @@ methods: {
     imageClick ()  {
       showLayerById("yxdt")
       hiddenLayerById("dzdt")
-     
+   
     },
      vectorClick  ()  {
         showLayerById("dzdt")
+       
         hiddenLayerById("yxdt")
     
     },

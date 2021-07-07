@@ -12,7 +12,6 @@ import { createApp, onMounted } from "vue";
 export default {
   setup() {
     let mapPopup = null;
-
     onMounted(() => {
       addPopup();
     });

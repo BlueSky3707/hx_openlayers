@@ -45,6 +45,17 @@ export const getDataByNameOrCode = (params) => {
       params 
     })
 }
+// 城市数据统计
+// *layername要统计表名"cun_sx"
+// *citytablename城市表"city_gz"
+// outFields城市表字段cityname,citycode
+// *type统计格式 数量"count(*)",求和"sum(length)",平均"avg(length)"
+export const getGroupData = (params) => {
+  return axios({
+    url: '/api/rest/getGroupData',
+    params 
+  })
+}
 //批量新增
 //例{tablename:"test",list:[
 //   {name:"讨厌",descrape:"规划",geom:'POINT(109.28 37.75)'},

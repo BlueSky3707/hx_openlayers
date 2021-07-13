@@ -42,6 +42,7 @@ methods: {
     },
     imageClick ()  {
       showLayerById("yxdt")
+       showLayerById("yxdtbz")
       hiddenLayerById("dzdt")
    
     },
@@ -49,6 +50,7 @@ methods: {
         showLayerById("dzdt")
        
         hiddenLayerById("yxdt")
+         hiddenLayerById("yxdtbz")
     
     },
     changToolShow() {

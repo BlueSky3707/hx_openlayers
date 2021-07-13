@@ -105,7 +105,18 @@ export  const addLayerByNameOrCodeSearch=(param,layerid,img)=>{
     }
  })
 }
-
+//统计
+export  const addLayerByGroupData=(param,layerid,img)=>{
+  param={layername:"cun_sx",citytablename:"city_gz",outFields:"cityname",type:"count(*)"}
+  layerid="cc"
+  img=require('@/assets/16.png')
+ baselayer.reMoveLayerById(layerid)
+ postgis.getGroupData(param).then(res => {
+   if(res.data.data.features&&res.data.data.features.length>0){
+     createVectLayerByFeatures(layerid,img,res.data.data.features)
+   }
+})
+}
 export function loadArcgisFlayer(serviceUrl,layerid,img){
    layerid="dd"
    serviceUrl ="http://10.61.5.60:6080/arcgis/rest/services/YA/YA_YJlist/FeatureServer/1";

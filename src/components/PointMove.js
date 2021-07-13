@@ -39,13 +39,23 @@ var styles={
       image: new Icon({
         anchor: [0.5, 1],
         src: require("@/assets/jcc1.png")
-      })
+      }),
+      zIndex:10
     }),
     end: new Style({
       // 设置结束标记样式
       image: new Icon({
         anchor: [0.5, 1],
         src: require("@/assets/jcc2.png")
+      }),
+      zIndex:10
+    }),
+    
+    work: new Style({
+      // 设置结束标记样式
+      image: new Icon({
+        anchor: [0.5, 1],
+        src: require("@/assets/jcc4.png")
       })
     })
   }
@@ -234,7 +244,15 @@ const addPointLine=(pointArray)=>{
           return styles[feature.get("type")];
         }
       });
-       
+     
+      pointArray.forEach((item,index) => {
+         if(index!==0&&index!==pointArray.length-1){
+         vectorLayer.getSource().addFeature(new Feature({
+                  type: "work",
+                  geometry: new Point(item)
+              })) 
+         }
+      });
       window.$olMap.addLayer(vectorLayer)
 
 }

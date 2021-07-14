@@ -1,8 +1,8 @@
 <template>
 
- <div  class="popup-content">
-    <span>{{pValue.name}}</span>
-    <span>{{pValue.type}}</span>
+ <div  class="popup-content" v-if="$pValue">
+    <span>{{$pValue.name}}</span>
+     <span>{{$pValue.type}}</span>
  </div> 
   
 </template>
@@ -13,16 +13,14 @@ export default {
   components: {
    
   },
-  props: {
-    pValue: Object
-  },
-  setup() {
-  
+  mounted(){
+    console.log(this.$pValue)
   }
 }
 </script>
 <style>
-/* .popup-content{
-    background-color: antiquewhite;
-} */
+.popup-content{
+  /* width: 1000px;
+  height: 500px; */
+}
 </style>

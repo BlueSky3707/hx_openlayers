@@ -4,6 +4,8 @@ import TileArcGISRest from 'ol/source/TileArcGISRest';
 import {mapConfig} from "../mapUtils/mapConfig"
 import VectorSource from 'ol/source/Vector'
 import XYZ from 'ol/source/XYZ'
+// import WMTS from 'ol/source/WMTS'
+import {ScaleLine,ZoomToExtent} from 'ol/control';
 import VectorLayer from 'ol/layer/Vector'
 import {Circle as CircleStyle, Fill, Style,Stroke} from 'ol/style'
 import { defaults as defaultControls} from 'ol/control';
@@ -20,13 +22,15 @@ export  const intMap=(mapid)=>{
     }),
     controls:defaultControls({
       attribution: false,
-      zoom: false,
-      rotate: false})
+      zoom: true,
+      rotate: true})
   });
+  map.addControl(new ScaleLine());
+  map.addControl(new ZoomToExtent({extent:[108.40180097765179, 31.7315884712111, 112.84578930830199, 40.09306852305697],
+    label:""}));
   window.$olMap=map;
   loadIntLayer()//自定义底图
  //loadIntGdLayer()//高德底图
- //loadIntTestLayer()
 }
 //自定义底图
 export  const loadIntLayer=()=>{
@@ -86,12 +90,18 @@ export const loadIntTestLayer=()=>{
     id:"dzdt",
     visible:true,
     source: new XYZ({
-      url: 'https://mt1.google.com/vt/lyrs=r&x={x}&y={y}&z={z}'
+      url: 'https://t0.tianditu.gov.cn/DataServer?T=vec_w&x={x}&y={y}&l={z}&tk=577a653bbf02141362a1895e19fe5b04'
     })
   });
-
+var ggdzlayer2 = new TileLayer({
+    id:"dzdt",
+    visible:true,
+    source: new XYZ({
+      url: 'https://t0.tianditu.gov.cn/DataServer?T=cia_w&x={x}&y={y}&l={z}&tk=577a653bbf02141362a1895e19fe5b04'
+    })
+  });
   window.$olMap.addLayer(ggdzlayer) 
-
+window.$olMap.addLayer(ggdzlayer2) 
 }
  
 

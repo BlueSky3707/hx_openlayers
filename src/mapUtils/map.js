@@ -29,6 +29,7 @@ export  const intMap=(mapid)=>{
   map.addControl(new ZoomToExtent({extent:[108.40180097765179, 31.7315884712111, 112.84578930830199, 40.09306852305697],
     label:""}));
   window.$olMap=map;
+  
   loadIntLayer()//自定义底图
  //loadIntGdLayer()//高德底图
 }

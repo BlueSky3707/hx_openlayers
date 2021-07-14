@@ -157,7 +157,10 @@ export const measure=(map, measureType)=>{
           map.un('pointermove', pointerMoveHandler);
           map.removeInteraction(draw);
           setTimeout(function(){
-            map.addInteraction(doubleClickZoom);
+            if(doubleClickZoom){
+              map.addInteraction(doubleClickZoom);
+            }
+           
           },100);
       if(overlaytip.length>0){
         overlaytip.forEach(overlayTmp => {

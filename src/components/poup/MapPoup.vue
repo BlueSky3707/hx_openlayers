@@ -41,9 +41,9 @@ export default {
           mapPopup.unmount();
         }
         var feature = window.$olMap.getFeaturesAtPixel(evt.pixel)[0];
-        if (feature && feature.get("atr") && feature.get("id")) {
+        if (feature && feature.get("attributes") && feature.get("id")) {
           mapPopup = createApp(poup1);
-          mapPopup.config.globalProperties.$pValue = feature.get("atr");
+          mapPopup.config.globalProperties.$pValue = feature.get("attributes");
           mapPopup.mount("#contentId");
           var coordinate = evt.coordinate;
           window.$olMap.getView().setCenter(coordinate);

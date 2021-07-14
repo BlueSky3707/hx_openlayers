@@ -42,12 +42,15 @@ methods: {
     },
     imageClick ()  {
       showLayerById("yxdt")
+       showLayerById("yxdtbz")
       hiddenLayerById("dzdt")
-     
+   
     },
      vectorClick  ()  {
         showLayerById("dzdt")
+       
         hiddenLayerById("yxdt")
+         hiddenLayerById("yxdtbz")
     
     },
     changToolShow() {

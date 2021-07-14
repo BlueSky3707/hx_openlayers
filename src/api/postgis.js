@@ -45,8 +45,22 @@ export const getDataByNameOrCode = (params) => {
       params 
     })
 }
+// 城市数据统计
+// *layername要统计表名"cun_sx"
+// *citytablename城市表"city_gz"
+// outFields城市表字段cityname,citycode
+// *type统计格式 数量"count(*)",求和"sum(length)",平均"avg(length)"
+export const getGroupData = (params) => {
+  return axios({
+    url: '/api/rest/getGroupData',
+    params 
+  })
+}
 //批量新增
-//例[{tablename:"test",items:[{name:"name",value:"是违法"},{name:"descrape",value:"规划"},{name:"geom",value:'POINT(108.58 35.65)'}]}]
+//例{tablename:"test",list:[
+//   {name:"讨厌",descrape:"规划",geom:'POINT(109.28 37.75)'},
+//   {name:"讨厌22",descrape:"规划2",geom:'POINT(109.38 36.75)'}
+//  ]}
 export const insertData = (params) => {
   return axios({
     method: 'post',
@@ -55,8 +69,10 @@ export const insertData = (params) => {
   })
 }
 //批量更新
-//例[{tablename:"test",items:[{name:"name",value:"是"},{name:"descrape",value:"规"},{name:"geom",value:'POINT(108.54 35.29)'}],
-//  wheres:[{name:"gid",value:2}]} ]
+//例{tablename:"test",list:[
+//   {name:"讨厌00",descrape:"规划0",geom:'POINT(109.28 37.75)',wheres:{gid:20}},
+//   {name:"讨厌0",descrape:"规划0",geom:'POINT(109.38 35.75)',wheres:{gid:21}}
+//  ]}
 export const updateData = (params) => {
   return axios({
     method: 'post',

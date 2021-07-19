@@ -18,13 +18,12 @@
 </div>
 </template>
 <script>
-import MapView from "../mapview/MapView"
-import MapTools from "../../components/measuretool/Measure.vue"
-//  import MapTools from "../mapview/MapTools"
-import MapPoup from "../../components/poup/MapPoup"
-import {loadEchartLayer,removeOverlays} from "../../components/echartLayer"
-import {move,stopMove,goOn,back,clean} from '../../components/PointMove'
-import * as layersManger from '../../components/layersManger'
+import MapView from "../mapview/MapView.vue"
+import MapTools from "./MapTools.vue"
+import MapPoup from "./MapPoup.vue"
+import {loadEchartLayer,removeOverlays} from "../../page/echartLayer"
+import {move,stopMove,goOn,back,clean} from '../../page/PointMove'
+import * as layersManger from '../../page/layersManger'
 import {reMoveLayerById} from '../../mapUtils/baselayer'
 export default {
   components: {
@@ -59,9 +58,9 @@ export default {
         loadEchartLayer()
     },
     addpoints(){
-       layersManger.loadLayer()
+      //  layersManger.loadLayer()
     // layersManger.loadArcgisFlayer()
-    // layersManger.addLayerBySearch({},"","")
+     layersManger.addLayerBySearch({layerName:"citypt",isReturnGeometry:true,spatialRel:"INTERSECTS",},"aa",require('@/assets/16.png'))
     //layersManger.addLayerByBufferSearch({},"","")
     // layersManger.addLayerByNameOrCodeSearch({},"","")
     },

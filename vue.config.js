@@ -10,11 +10,19 @@ module.exports = {
       host: '0.0.0.0',
       port: 8085,
       proxy: {
-        '/api': {   
+        '/postgisapi': {   
+          target: 'http://10.61.5.63:8081',   
+          changeOrigin: true,
+          pathRewrite: {
+            '^/postgisapi': ''
+          }
+        },
+        
+        '/vectapi': {   
           target: 'http://localhost:8081',   
           changeOrigin: true,
           pathRewrite: {
-            '^/api': ''
+            '^/vectapi': ''
           }
         }
       }

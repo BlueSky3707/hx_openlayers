@@ -10,7 +10,7 @@ import axios from 'axios'
 // limit每页记录数，默认100
 export const search = (params) => {
     return axios({
-      url: '/api/rest/search',
+      url: '/postgisapi/rest/api/search',
       params 
     })
 }
@@ -25,7 +25,7 @@ export const search = (params) => {
 // limit每页记录数，默认100
 export const bufferSearch = (params) => {
     return axios({
-      url: '/api/rest/bufferSearch',
+      url: '/postgisapi/rest/bufferSearch',
       params 
     })
 }
@@ -41,7 +41,7 @@ export const bufferSearch = (params) => {
 // limit每页记录数，默认100
 export const getDataByNameOrCode = (params) => {
     return axios({
-      url: '/api/rest/getDataByNameOrCode',
+      url: '/postgisapi/rest/getDataByNameOrCode',
       params 
     })
 }
@@ -52,7 +52,7 @@ export const getDataByNameOrCode = (params) => {
 // *type统计格式 数量"count(*)",求和"sum(length)",平均"avg(length)"
 export const getGroupData = (params) => {
   return axios({
-    url: '/api/rest/getGroupData',
+    url: '/postgisapi/rest/getGroupData',
     params 
   })
 }
@@ -64,7 +64,7 @@ export const getGroupData = (params) => {
 export const insertData = (params) => {
   return axios({
     method: 'post',
-    url: '/api/rest/insertData',
+    url: '/postgisapi/rest/insertData',
     data:params
   })
 }
@@ -76,7 +76,7 @@ export const insertData = (params) => {
 export const updateData = (params) => {
   return axios({
     method: 'post',
-    url: '/api/rest/updateData',
+    url: '/postgisapi/rest/updateData',
     data:params
   })
 }
@@ -85,7 +85,7 @@ export const updateData = (params) => {
 export const deleteData = (params) => {
   return axios({
     method: 'post',
-    url: '/api/rest/deleteData',
+    url: '/postgisapi/rest/deleteData',
     data:params
   })
 }

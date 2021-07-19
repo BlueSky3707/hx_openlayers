@@ -3,8 +3,9 @@ import axios from 'axios'
 import VectorSource from 'ol/source/Vector'
 import VectorLayer from 'ol/layer/Vector'
 import {Point} from 'ol/geom';
-// import EsriJSON from 'ol/format/EsriJSON';
-import { Style,Icon} from 'ol/style'//Circle as CircleStyle, Fill,
+// import EsriJSON from 'ol/format/EsriJSON';MultiPolygon
+import GeoJSON from 'ol/format/GeoJSON';
+import { Style,Icon,Fill, Stroke} from 'ol/style'//Circle as CircleStyle, Fill,
 import * as postgis from '../api/postgis'
 import * as baselayer from '../mapUtils/baselayer'
 export  const loadLayer=()=>{
@@ -49,31 +50,52 @@ export  const loadLayer=()=>{
 // 矢量创建图层
 const createVectLayerByFeatures=(layerid,img,datas)=>{
       var features=[]
+     var geogson=new GeoJSON()
       datas.forEach(item => {
         var geo=JSON.parse(item.geoJson);
-        features.push(new Feature( {attributes: item.attributes,id:layerid,geometry: new Point(geo.coordinates)})) 
+        if(geo.type==="MultiPolygon"){
+          var f=geogson.readFeature(geo);
+          features.push(new Feature( {attributes: item.attributes,id:layerid,geometry:f.getGeometry() }))
+        }else if(geo.type==="Point"){
+          features.push(new Feature( {attributes: item.attributes,id:layerid,geometry: new Point(geo.coordinates)}))
+        }
+        
       }); 
       let featurelayer=new VectorLayer({
         id:layerid,
         source: new VectorSource({
           features:features
         }),
-        style:new Style({
-            image: new Icon({
-              src:img,
-              scale:[0.8,0.8]
-            })
-        })
+        style:function(feature) {
+          if(feature.getGeometry().getType()==="Point"){
+            return  new Style({
+                image: new Icon({
+                  src:img,
+                  scale:[0.8,0.8]
+                })
+            });
+          }else {
+            return  new Style({
+              fill: new Fill({
+                  color:  'red',
+              }),
+              stroke: new Stroke({
+                  color:  '#b9d83c',
+                  width: 3
+              }) 
+          });
+          }
+        }
       })
     window.$olMap.addLayer(featurelayer)
 }
 //图层查询
 export  const addLayerBySearch=(param,layerid,img)=>{
-  param={layerName:"countypt_sx",isReturnGeometry:true,
-  spatialRel:"INTERSECTS",
-  spatialFilter:'MULTIPOLYGON(((108.2 34.3,110.2 34.3,110.2 37.3,108.2 37.3,108.2 34.3)))'}
-   layerid="cc"
-   img=require('@/assets/16.png')
+  // param={layerName:"countypt_sx",isReturnGeometry:true,
+  // spatialRel:"INTERSECTS",
+  // spatialFilter:'MULTIPOLYGON(((108.2 34.3,110.2 34.3,110.2 37.3,108.2 37.3,108.2 34.3)))'}
+  //  layerid="cc"
+  //  img=require('@/assets/16.png')
   baselayer.reMoveLayerById(layerid)
   postgis.search(param).then(res => {
     if(res.data.data.features&&res.data.data.features.length>0){
@@ -81,6 +103,7 @@ export  const addLayerBySearch=(param,layerid,img)=>{
     }
  })
 }
+
 //图层缓冲区过滤查询
 export  const addLayerByBufferSearch=(param,layerid,img)=>{
    param={layerName:"countypt_sx",buffDis:20000,isReturnGeometry:true,spatialFilter:'POINT(108.930671102 34.341838499)'}
@@ -108,7 +131,7 @@ export  const addLayerByNameOrCodeSearch=(param,layerid,img)=>{
 //统计
 export  const addLayerByGroupData=(param,layerid,img)=>{
   param={layername:"cun_sx",citytablename:"city_gz",outFields:"cityname",type:"count(*)"}
-  layerid="cc"
+  layerid="ffc"
   img=require('@/assets/16.png')
  baselayer.reMoveLayerById(layerid)
  postgis.getGroupData(param).then(res => {

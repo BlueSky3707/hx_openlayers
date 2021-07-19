@@ -7,7 +7,7 @@
 
 <script>
 import Overlay from "ol/Overlay";
-import poup1 from "../poup/components/poup1";
+import poup1 from "../../components/poup/poup1.vue";
 import { createApp, onMounted } from "vue";
 export default {
   setup() {
